@@ -5,7 +5,7 @@ using namespace std;
 unsigned long long  LCM(unsigned long long  a,unsigned long long  b){
     unsigned long long  a1=a,b1=b;
 
-    while(b!=0){
+    while(b!=0){    
         unsigned long long  r=a%b;
         a=b;
         b=r;
