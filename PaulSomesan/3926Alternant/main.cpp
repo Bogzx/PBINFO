@@ -32,7 +32,6 @@ bool alternant(long long n){
 
 int main(){
     long long n;
-    cout<<"test";
     cin>>n;
     if(alternant(n))
         cout<<"da";
