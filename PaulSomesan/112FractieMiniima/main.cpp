@@ -34,7 +34,6 @@ int main(){
     }
 
     int gcd=GCD(max,min);
-
     cout<<min/gcd<<"/"<<max/gcd; 
 
 
