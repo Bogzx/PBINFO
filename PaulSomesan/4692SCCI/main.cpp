@@ -1,12 +1,13 @@
 #include <iostream>
 
 using namespace std;
-int n,a[100001];
+long long n,sir[100001],sir2[100001],a[100001];
 
-int partitionare(int st,int dr){
-    int j=st-1;
-    int 
-    for(int i=st;i<dr;i++){
+long long partitionare(long long st,long long dr){
+    long long j=st-1;
+    long long mid=(st+dr)/2;
+    swap(a[mid],a[dr]);
+    for(long long i=st;i<dr;i++){
         if(a[i]<a[dr])
             swap(a[i],a[++j]);
     }
@@ -16,28 +17,59 @@ int partitionare(int st,int dr){
 
 
 
-void quicksort(int st,int dr){
+void quicksort(long long st,long long dr){
     if(st<dr){
-        int p=partitionare(st,dr);
+        long long p=partitionare(st,dr);
         quicksort(st,p-1);
         quicksort(p+1,dr);
     }
-
-
 }
+
+
+void mergesort(long long st, long long dr){
+    if(st<dr){
+        long long mij=(st+dr)/2;
+        mergesort(st,mij);
+        mergesort(mij+1,dr);
+
+        long long indc=1, inda=st,indb=mij+1;
+        while(inda<=mij and indb<=dr){
+            if(sir[inda]<=sir[indb]){
+                sir2[indc++]=sir[inda++];
+            }
+            else{
+                sir2[indc++]=sir[indb++];
+            }
+        }
+
+        while(inda <=mij)
+            sir2[indc++]=sir[inda++];
+    
+        while(indb <=dr)
+            sir2[indc++]=sir[indb++];
+
+        
+        for(long long i=1;i<indc;i++){
+            sir[st+i-1]=sir2[i];
+        }
+        
+        }
+}
+
+
 
 int main(){
     cin>>n;
-    for(int i=1;i<=n;i++)
-        cin>>a[i];
+    for(long long i=1;i<=n;i++)
+        cin>>sir[i];
     
-    quicksort(1,n);
-    int contormare=0;
-    for(int i=1;i<=n;i++)
+    mergesort(1,n);
+    long long contormare=0;
+    for(long long i=1;i<=n;i++)
         {
-            int contor=1;
-            int j=i;
-            while(a[j]==a[j+1]){
+            long long contor=1;
+            long long j=i;
+            while(sir[j]==sir[j+1]){
                 j++;
                 contor++;
             }
