@@ -7,7 +7,7 @@ ofstream out("cb1.out");
 int a[50001];
 
 
-int howmany_smaller_or_equal_than_n(int st,int dr,int x){   //Calculam elementul cel mai mare
+int howmany_smaller_or_equal_than_n(int st,int dr,int x){ 
     int index=-1;
     int mij;
     while(st<=dr){
